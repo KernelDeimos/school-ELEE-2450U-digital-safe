@@ -1,24 +1,24 @@
-#include "Dial.h"
+#include "pins.h"
 
-int POT_PIN = 2;
-int LED_PIN = 8;
+#include "DigitalSafe.h"
+
 int val = 0;
 
-Dial *dial;
+DigitalSafe *ds;
 
 void setup() {
-	pinMode(LED_PIN, OUTPUT);
-	dial = new Dial();
+	Serial.begin(9600);
+	pinMode(CLK_BEEP_PIN, OUTPUT);
+	pinMode(FEEDBACK_PIN, OUTPUT);
+
+	pinMode(LED_R, OUTPUT);
+	pinMode(LED_B, OUTPUT);
+	pinMode(LED_G, OUTPUT);
+
+	ds = new DigitalSafe();
 }
 
 void loop() {
-	val = analogRead(POT_PIN);
-	dial->update_value(val);
-	digitalWrite(13, HIGH);
-  digitalWrite(LED_PIN, HIGH);
-	delay((dial->get_value_as_int()+1));
-	digitalWrite(13, LOW);
-  digitalWrite(LED_PIN, LOW);
-	delay((dial->get_value_as_int()+1));
+	ds->loop();
 }
 

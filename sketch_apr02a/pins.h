@@ -10,4 +10,6 @@ int LED_R = 2;
 int LED_B = 4;
 int LED_G = 7;
 
+int OUTSIDE_BUTTON_PIN = 3;
+
 #endif

@@ -48,6 +48,11 @@ void Dial::update_value(int analog_input) {
 	analog_value = analog_input;
 	_update_digital_value();
 
+	// Write the value to the LED
+	digitalWrite(LED_R, (digital_value==1 || digital_value==3 || digital_value==5 || digital_value==7) ? HIGH : LOW);
+	digitalWrite(LED_G, (digital_value==2 || digital_value==3 || digital_value==6 || digital_value==7) ? HIGH : LOW);
+	digitalWrite(LED_B, (digital_value>=4) ? HIGH : LOW);
+
 }
 
 void Dial::_update_interval_ranges() {

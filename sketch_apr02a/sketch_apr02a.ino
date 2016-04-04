@@ -15,6 +15,8 @@ void setup() {
 	pinMode(LED_B, OUTPUT);
 	pinMode(LED_G, OUTPUT);
 
+	pinMode(OUTSIDE_BUTTON_PIN, INPUT);
+
 	ds = new DigitalSafe();
 }
 
